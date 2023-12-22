@@ -104,14 +104,21 @@
             let content = $('#content').val();
             let email = $('#email').val();
 
-            let doc = {
-                'name': name,
-                'content': content,
-                'email': email
-            };
-            await addDoc(collection(db, "comments"), doc);
-            alert('저장 완료!');
-            window.location.reload();
+            if (name == '' || content == '' || email == '') {
+
+                alert("입력되지 않은 사항이 있습니다!")
+            }
+            else {
+                let doc = {
+                    'name': name,
+                    'content': content,
+                    'email': email
+                };
+                await addDoc(collection(db, "comments"), doc);
+                alert('저장 완료!');
+                window.location.reload();
+            }
+
         })
 
         $("#savebtn").click(async function () {
