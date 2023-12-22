@@ -1,0 +1,881 @@
+<!doctype html>
+
+</html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" width="device-width" initial-scale=1.0>
+    <title>우리 3조를 소개합니다!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Single Day', 'cursive';
+        }
+
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        footer {
+            height: 188px;
+            font-size: 29px;
+        }
+
+        #header_title {
+            margin: 0px auto 0px auto;
+            background-color: white;
+            width: 90%;
+            border: 1px solid white;
+            border-radius: 5px
+        }
+
+        .members {
+            width: 90%;
+            margin: 15px auto 20px auto;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            color: black;
+        }
+
+        .members img {
+            width: 200px;
+            height: 271px;
+            border: 1px solid rgba(255, 255, 255, 0);
+            margin-bottom: 10px;
+            border-radius: 10PX;
+        }
+
+        .intro {
+            width: 1200px;
+            height: 150px;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 20px 0px 0px 20px;
+        }
+
+        .namebox {
+            margin: 15px auto 20px auto;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .namebox>text {
+            width: 170px;
+            height: 30px;
+            border: 1px solid white;
+        }
+
+        .page2-textbox {
+            margin: 100px 50px;
+            padding-top: 50px;
+            width: 685px;
+            height: 600px;
+            border: 5px solid white;
+            color: white;
+            border-radius: 15px;
+        }
+
+        .page2-textbox p {
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        .page2-justbox {
+            margin: 100px 50px;
+            padding-top: 50px;
+            width: 685px;
+            height: 600px;
+            border: 5px solid white;
+            border-radius: 15px;
+        }
+
+        .page2-justbox td {
+            border: 3px solid white;
+            border-radius: 10px;
+        }
+
+        .carousel-item img {
+            height: 500px;
+        }
+
+        .goalsContainer {
+            font-size: 28px;
+        }
+
+        /* 여기부터 방명록 */
+        .guestbook {
+            height: 250px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-position: center;
+            background-size: cover;
+        }
+
+        .guestbook>button {
+            width: 150px;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+
+            margin-top: 20px;
+        }
+
+        .ourcards {
+            color: white;
+            width: 1200px;
+            margin: 75px auto 54px auto;
+        }
+
+        .ourcommentbox {
+            height: 440px;
+            width: 600px;
+            margin: 30px auto 0px auto;
+            border: 4px solid rgb(45, 164, 103);
+            ;
+            padding: 20px;
+            box-shadow: 0px 0px 20px 0px rgb(45, 164, 103);
+
+            border-radius: 5px;
+            font-size: 30px;
+        }
+
+        .ourbtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .ourbtn>button {
+            margin-right: 5px;
+        }
+
+        .card {
+            background-color: transparent;
+            margin-right: 20px;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_ZgQOmX6ggtWDytaIJn_-yqp22vJIhOs",
+            authDomain: "sparta-54f1b.firebaseapp.com",
+            projectId: "sparta-54f1b",
+            storageBucket: "sparta-54f1b.appspot.com",
+            messagingSenderId: "417143827658",
+            appId: "1:417143827658:web:bffd7bac9f40fd269c5833",
+            measurementId: "G-S0KNW7GGEK"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        // 팀목표 추가
+        $("#postingbtn").click(async function () {
+            let goal = $('#goal').val();
+
+            let doc = {
+                'goal': goal
+            };
+            await addDoc(collection(db, "goals"), doc);
+            alert('등록 완료!');
+            window.location.reload();
+        })
+
+        $('#goalsContainer').empty();
+
+
+        // 팀목표 가져오기
+        let docs = await getDocs(collection(db, "goals"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let goalId = doc.id;
+
+            let goal = row['goal'];
+
+            // 가져온후 팀목표를 삭제를 하기위한 작업
+            // 글을 추가하고 보여질 때 해당하는 버튼을 한 div에 묶어서 만들어준다.
+            let temp_html = `
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="${goalId}">
+                <label class="form-check-label" for="${goalId}">
+                    ${goal}
+                </label>
+                <button class="deletebtn" style="background-color: #ffffff00; border: none;">
+                    <img src="./deletebtn.png" alt="삭제버튼" width="20px" height="20px">
+                </button>
+            </div>`;
+            $('#goalsContainer').append(temp_html)
+        });
+
+
+        // 팀목표 삭제
+        // 삭제 버튼은 id가 goalsContainer인 div안에 있고 그 안에 있는 deletebtn을 클릭했을 때 작동하도록 해야합니다.
+        // ※ 버튼은 id가 아니라 class인 이유 : 버튼은 아이디가 바뀔 필요성이 없고 하나의 버튼이 여러 div안에 있으므로 id는 중첩이 안되도록 하나만 있어야 하지만 class는 중복 되어도 상관없기 때문
+        // 그런 뒤 파이어 스토어는 비동기 성이 존재하므로 async function 즉, 비동기 함수를 써야합니다..
+        $('#goalsContainer').on('click', '.deletebtn', async function () {
+
+            // 해당하는 버튼의 id찾기
+
+            // this는 내가 버튼을 누른 그 순간의 deletebtn.
+            // closet()메서드는 가장 가까이에 있는 부모인 클래스 form-chech를 찾아갑니다 (div).
+            // 찾은 formcheck에서 find()메서드로 ladel을 찾고 그 안에 있는 for의 속성(attr)을 가져오면 데이터베이스 문서(goals)의 이름을 가져 올수 있습니다.  
+            let formCheck = $(this).closest('.form-check');
+            let goalId = formCheck.find('label').attr('for');
+            console.log(goalId);
+
+            // 여기까지 되면 삭제완료가 뜨도록 하였고
+            alert('삭제 완료!');
+
+            // 파이어 스토어에서 import한  doc, deleteDoc 를 사용하여
+            // doc에 데이터베이스 정보, 문서 공간, 문서 이름을 보내서 deleteDoc를 사용하여 삭제하고 윈도우를 reload하여 삭제한 내용을 안보이게 하였습니다.
+            await deleteDoc(doc(db, "goals", goalId));
+
+            window.location.reload();
+        });
+
+
+        // 방명록 추가 및 유효성 체크
+        $("#commentbtn").click(async function () {
+            let name = $('#name').val();
+            let content = $('#content').val();
+            let email = $('#email').val();
+
+            if (name == '' || content == '' || email == '') {
+
+                alert("입력되지 않은 사항이 있습니다!")
+            }
+            else {
+                let doc = {
+                    'name': name,
+                    'content': content,
+                    'email': email
+                };
+                await addDoc(collection(db, "comments"), doc);
+                alert('저장 완료!');
+                window.location.reload();
+            }
+        });
+
+
+        // 방명록 수정하기
+        $('.ourcards').on('click', '.editbtn', async function () {
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
+
+            let newContent = prompt("수정할 한마디를 입력해주세요.")
+            if (newContent == '') {
+                alert('내용이 비어 있어 수정할 수 없습니다!')
+            }
+            else {
+                await updateDoc(doc(db, "comments", contentdox), { content: newContent });
+                window.location.reload();
+            }
+        });
+
+
+        // 방명록 삭제하기
+        $('#card').on('click', '.deletebtn', async function () {
+
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
+
+
+            await deleteDoc(doc(db, "comments", contentdox));
+            alert('삭제 완료!');
+            window.location.reload();
+        });
+
+        $("#savebtn").click(async function () {
+            $('#commentbox').toggle();
+        })
+
+        $('#card').empty();
+
+
+        // 방명록 가져오기
+        let docs1 = await getDocs(collection(db, "comments"));
+        docs1.forEach((doc) => {
+            let row = doc.data();
+            console.log(row);
+
+            let name = row['name'];
+            let content = row['content'];
+            let email = row['email'];
+            let contentdox = doc.id;
+
+            let temp_html = `
+            <div class="card border-light mb-3" id = "${contentdox}" style="max-width: 18rem; ;">
+            <div class="card-header">${email}</div>
+            <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text">${content}</p>
+            <button class="editbtn" style="background-color: #ffffff00; border: none;">
+            <img src="./edit.png" alt="수정버튼" width="20px" height="20px">
+            </button>
+            <button class="deletebtn" style="background-color: #ffffff00; border: none;">
+            <img src="./deletebtn.png" alt="삭제버튼" width="20px" height="20px">
+            </button>
+            </div>
+            </div>`;
+            $('#card').append(temp_html);
+        });
+
+
+
+        //요일 가져오기
+
+        var todayContainer = document.querySelector(".today");
+        var d = new Date();
+        console.log(d.getDay());
+
+
+        var weekday = new Array(7);
+        weekday[0] = "일요일🥰";
+        weekday[1] = "월요일💪";
+        weekday[2] = "화요일😜";
+        weekday[3] = "수요일😌";
+        weekday[4] = "목요일🤗";
+        weekday[5] = "금요일💖";
+        weekday[6] = "토요일😴";
+
+
+        var n = weekday[d.getDay()];
+        $('#day').text(n)
+
+    </script>
+
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+<body>
+
+    <header style="margin-bottom: 10px; --bs-bg-opacity: .5;" class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li style="font-size: 50px;" class=" px-4 text-warning">I - FIVE</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-danger">Sign-up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 대표 특징 슬라이드 -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner" style="width: 90%; height: 500px; margin: 0 auto;">
+            <div class="carousel-item active">
+                <img src="./mainslideimg/speed.jpg" class="d-block w-100"
+                    alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="text-align: right; color: black; width: 1366px;">
+                    <h1 class="stitle" style="font-size: 80px; font-weight: 600; color: orange; margin-right: 400px; ">S p e e d</h1>
+                    <h3 style="font-size: 35px; font-weight: 500;">대문자 I치고 굉장히 속도가 빠릅니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./mainslideimg/meeting.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="width: 400px; margin: 0px 0px 232px 800px;text-align: right; color: black;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600;">Communication</h1>
+                    <h3 style=" font-size: 35px; font-weight: 500;">의사소통이 굉장히 원활합니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img src="./mainslideimg/challenge.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style=" margin-bottom: 300px; color: black;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600;">C h a l l e n g e</h1>
+                    <h3 style=" font-size: 30px; font-weight: 500;">해보겠다는 의지는 모든 조 중에서 최고입니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item" style="width: 80%;">
+                <img src="./mainslideimg/idea.jpg" class="d-block w-100"
+                    alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="width: 400px; margin: 0px 0px 90px 695px;text-align: center;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600; margin-bottom: 30px;">I d e a</h1>
+                    <h3 style=" font-size: 30px; font-weight: 500;">아이디어 자판기들이 모여있습니다.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./mainslideimg/Systematic.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style=" margin: 0px 0px 151px 0px;">
+                    <h1 class="stitle" style=" font-size: 80px; font-weight: 600; margin-bottom: 70px; color: mediumvioletred;">S y s t e m a  t i c</h1>
+                    <h3 style=" font-size: 40px; font-weight: 500; color: rgb(102, 255, 153);">아주 체계적이고 섬세합니다.</h3>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- 멤버 개인 소개 -->
+    <p style="font-size: 30px; margin-left: 80px; margin-top: 20px; padding-left: 30px;"> I-FIVE 멤버를 소개합니다! </p>
+    <div class="members">
+
+        <!-- 메인화면 지민 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                <img width="200px" height="200px" src="./i_1.jpg" alt="곽지민">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">곽 지 민</p>
+
+            <!-- 개인 모달 지민 -->
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./i_1.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        곽지민
+                                    </h1>
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFP</p>
+                                    <p>블로그 : https://startcoriny.tistory.com</p>
+                                    <p>나만의 장점
+                                        <br />• 포기하는 법을 모릅니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 일단 해봅니다.
+                                        <br />• 어떻게든 합니다.
+                                        <br />• 모두의 의견들 들어주고 절충안을 생각하여 해결합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 모두가 포기하지 않고 끝까지 갈수 있도록 서로 돕겠습니다.
+                                        <br />• 취직하자!!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 경복 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                <img width="200px" height="200px" src="./i_2.jpg" alt="이경복">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">이 경 복</p>
+
+            <!-- 개인 모달 경복 -->
+            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img src="./i_2.jpg" class="rounded float-end" width="300px" height="300px"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        이 경 복
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFJ</p>
+                                    <p>블로그 : https://velog.io/@boogiegie</p>
+                                    <p>나만의 장점
+                                        <br />• 꼼꼼하다.지독하게.
+                                        <br />• 기준이 확고하고 판단이 빠른편
+                                    </p>
+                                    <p>나의 스타일과 협업 스타
+                                        <br />• 계획적이고 건설적인 대화를 즐김.
+                                        <br />• 서로 의지할 수 있는 끈적한 팀워크를 선호.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br /> 지금을 즐기자! 아 즐겁다!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 세연 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                <img width="200px" height="200px" src="./i_3.jpg" alt="박세연">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">박 세 연</p>
+
+            <!-- 개인 모달 세연 -->
+            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./i_3.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        박 세 연
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : ISFJ</p>
+                                    <p>블로그 : https://velog.io/@park-sy13</p>
+                                    <p>나만의 장점
+                                        <br />• 관심을 가지고 있는 것에 한해서 정보를 조사하는 것이 빠릅니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 타인의 의견을 모아서 최고의 결론을 도출하는 것을 좋아합니다.
+                                        <br />• 간결한 것을 좋아하기 때문에짧게 요점만 나누어 보다 빠르게 결론을 도출하고자 합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 포기하지 말고 최선을 다할 것!!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 지선 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
+                <img width="200px" height="200px" src="./i_4.jpg" alt="임지선">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">임 지 선</p>
+
+            <!-- 개인 모달 지선 -->
+            <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./i_4.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        임 지 선
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INTP</p>
+                                    <p>블로그 : https://velog.io/@henryt</p>
+                                    <p>나만의 장점
+                                        <br />• 재미있어지면 멈출 수 없다!
+                                        <br />• 한 번 집중하면 파고든다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 상대방의 의견에 귀 귀울여 준다.
+                                        <br />• 좋은 의견이 생각나면 제시하기도 하지만 팀원의 더 좋은 의견에 잘 수긍한다.
+                                        <br />• 맡은 일에 최선을 다한다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 배움을 게을리 하지 않는다!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 대수 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+                <img width="200px" height="200px"
+                    src="https://file2.nocutnews.co.kr/newsroom/image/2023/05/03/202305031714287586_0.jpg" alt="박대수">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">박 대 수</p>
+
+            <!-- 개인 모달 대수 -->
+            <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px"
+                                        src="https://file2.nocutnews.co.kr/newsroom/image/2023/05/03/202305031714287586_0.jpg"
+                                        class="rounded float-end" alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        박 대 수
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFP</p>
+                                    <p>블로그 : https://startcoriny.tistory.com</p>
+                                    <p>나만의 장점 : </p>
+                                    <p>나의 스타일과 협업 스타일 : </p>
+                                    <p>나의 다짐 : </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 팀 규칙, 팀 비전 -->
+    <div class="page2" style=" display:flex; width: 90%; margin: 0 auto; flex-direction: row; justify-content: center;">
+        <div class="page2-textbox">
+            <div style="font-size:40px;font-weight:bold;padding:0px 50px 0px 50px; margin-bottom: 45px; ">팀 규칙</div>
+            <p style="padding:0px 50px 0px 50px;">1. 10분 이상 지각 <span style="color: yellow; font-size: 40px;">NO</span>
+            </p>
+            <p style="margin-top: 5px;padding:0px 50px 0px 50px;">2. 모르는 것 바로 질문하고 확실히 이해하기(단, 적당히 끊어줄 것)</p>
+            <p style="padding:0px 50px 0px 50px;"> 3. 자리 비울 때 공유 잘 하기</p>
+            <p style="padding:0px 50px 0px 50px;">4. 루틴 잘 지키기</p>
+            <p style="padding:0px 50px 0px 50px"><span style="color: yellow; font-size: 40px;">무리하지 않기!! 번아웃 No!</span>
+            </p>
+            <!-- <p style="padding:0px 50px 0px 50px;">저희 3조는, <span style="color: yellow; font-size: 40px;">I</span> 성향 5명이
+                모인 팀입니다.</p>
+            <p style="margin-top: 5px;padding:0px 50px 0px 50px;">굉장히 빠른 속도로 의견수립이 되며</p>
+            <p style="padding:0px 50px 0px 50px;"> 빠르게 행동으로 실행하고 있습니다.</p>
+            <p style="padding:0px 50px 0px 50px;">그만큼 체계적이면서 섬세하기까지한 아이들이 모였습니다!</p>
+            <p style="padding:0px 50px 0px 50px"><span style="color: yellow; font-size: 40px;">I</span> 치고 에너지 넘치는 3조!
+                I-FIVE 입니다!</p> -->
+        </div>
+        <div class="page2-textbox">
+            <div style="font-size:40px;font-weight:bold;padding:0px 50px 0px 50px; margin-bottom: 45px; ">궁극적인 목표</div>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">지민</span> - 코딩마스터
+            </p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">경복</span> - 배운거 다
+                써먹고 씹어먹기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">세연</span> - 에러 원인과
+                해결법 꼼꼼히 기록하기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">지선</span> - 절대 포기하지
+                않기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">대수</span> - 풀스택을
+                자유롭게 활용하자</p>
+        </div>
+    </div>
+
+
+    <!-- 오늘의 목표 -->
+    <div style="border: 10px solid #ffe45dc7; width: 50%; margin: 0 auto; margin-bottom: 20px; padding: 20px; border-radius: 10px;"
+        class="vision_container">
+        <div class="title">
+            <h1>오늘 우리의 목표</h1>
+            <p>힘차게 달려가는 오늘은 <span id="day">월요일💪😀</span></p>
+        </div>
+        <div class="mypostingbox" id="postingbox">
+            <div style="width: 100%;" class="form-floating mb-3">
+                <input type="text" class="form-control" id="goal" placeholder="목표를 작성하세요">
+                <label for="floatingInput">새로운 목표는?</label>
+            </div>
+            <div class="mybtn" style="width: 100%; text-align: right;">
+                <button id="postingbtn" type="button" class="btn btn-outline-light">작성 완료!</button>
+            </div>
+        </div>
+        <div class="mygoals">
+            <div id="goalsContainer" class="goalsContainer">
+                <div class="bd-example m-0 border-0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 방명록 작성 -->
+    <div>
+        <div class="guestbook">
+            <h1>3조 응원하기</h1>
+            <button id="savebtn">메시지 작성</button>
+        </div>
+        <div class="ourcommentbox" id="commentbox">
+            <label class="form-label" , style="color: white">이름과 주소</label>
+            <div class="input-group mb-3">
+                <input style="font-size: 25px;" type="text" id="name" class="form-control" placeholder="name"
+                    aria-label="name">
+                <span class="input-group-text">이메일</span>
+                <input style="font-size: 25px;" type="text" id="email" class="form-control" placeholder="email"
+                    aria-label="email">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label" , style="color: white">응원의 한마디</label>
+                <textarea style="height: 131px; font-size: 25px;" class="form-control" id="content" rows="3"></textarea>
+            </div>
+            <div class="ourbtn">
+                <button style="width: 140px; height: 60px; font-size: 30px; " id="commentbtn" type="button"
+                    class="btn btn-outline-light">등록하기</button>
+            </div>
+        </div>
+
+        <div class="ourcards">
+            <h1>응원의 메시지</h1>
+            <div id="card" style="width: 1300px;" class="row row-cols-1 row-cols-md-4 g-4">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-white">© 2023 I - FIVE</p>
+
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item" style="text-align: center;">
+                <a href="https://startcoriny.tistory.com" class="nav-link px-2 text-white">곽지민</a>
+                <img width="57px;" height="100px;" src="./mini1.png" alt="">
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="https://velog.io/@boogiegie" class="nav-link px-2 text-white">이경복</a>
+                <img width="60px;" height="100px;" src="./mini2.png" alt="">
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="https://velog.io/@park-sy13" class="nav-link px-2 text-white">박세연</a>
+                <img width="49px;" height="100px;" src="./mini3.png" alt="">
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="https://velog.io/@henryt" class="nav-link px-2 text-white">임지선</a>
+                <img width="60px;" height="100px;" src="./mini4.png" alt="">
+            </li>
+            <li class="nav-item" style="text-align: center;">
+                <a href="https://velog.io/@qkrds0914" class="nav-link px-2 text-white">박대수</a>
+                <img width="57px;" height="100px;" src="./mini1.png" alt="">
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>

@@ -76,10 +76,12 @@
     </style>
     <script type="module">
         // Firebase SDK 라이브러리 가져오기
+        // 여기에 있는 변수명?들은 중첩되면 안됨.
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
         // Firebase 구성 정보 설정
@@ -99,6 +101,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
+
+        // 방명록 추가 및 유효성 체크
         $("#commentbtn").click(async function () {
             let name = $('#name').val();
             let content = $('#content').val();
@@ -119,52 +123,47 @@
                 window.location.reload();
             }
 
-        })
+        });
 
+
+        // 방명록 수정하기
         $('.ourcards').on('click', '.editbtn', async function () {
-        let card = $(this).closest('.card.border-light.mb-3');
-        let contentdox = card.attr('id');
-        console.log(contentdox);
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
 
-        let newContent = prompt("수정할 한마디를 입력해주세요.")
-        if (newContent == '') {
+            let newContent = prompt("수정할 한마디를 입력해주세요.")
+            if (newContent == '') {
                 alert('내용이 비어 있어 수정할 수 없습니다!')
             }
-        else {
+            else {
                 await updateDoc(doc(db, "comments", contentdox), { content: newContent });
                 window.location.reload();
             }
-
         });
 
-                // 삭제 버튼은 id가 goalsContainer인 div안에 있고 그 안에 있는 deletebtn을 클릭했을 때 작동하도록 해야합니다.
-        // ※ 버튼은 id가 아니라 class인 이유 : 버튼은 아이디가 바뀔 필요성이 없고 하나의 버튼이 여러 div안에 있으므로 id는 중첩이 안되도록 하나만 있어야 하지만 class는 중복 되어도 상관없기 때문
-        // 그런 뒤 파이어 스토어는 비동기 성이 존재하므로 async function 즉, 비동기 함수를 써야합니다..
+
+        // 방명록 삭제하기
         $('#card').on('click', '.deletebtn', async function () {
-            // 해당하는 버튼의 id찾기
-            // this는 내가 버튼을 누른 그 순간의 deletebtn.
-            // closet()메서드는 가장 가까이에 있는 부모인 클래스 form-chech를 찾아갑니다 (div).
-            // 찾은 formcheck에서 find()메서드로 ladel을 찾고 그 안에 있는 for의 속성(attr)을 가져오면 데이터베이스 문서(goals)의 이름을 가져 올수 있습니다.
-            let formCheck = $(this).closest('.card');
-            // console.log(formCheck);
-            let formCheckId = formCheck.attr('id');
-            console.log(formCheckId);
-            // let contentdox = formCheck.find('.textcontainer').attr('id');
-            // console.log(contentdox);
-            // 여기까지 되면 삭제완료가 뜨도록 하였고
+
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
+
+
+            await deleteDoc(doc(db, "comments", contentdox));
             alert('삭제 완료!');
-            // 파이어 스토어에서 import한  doc, deleteDoc 를 사용하여
-            // doc에 데이터베이스 정보, 문서 공간, 문서 이름을 보내서 deleteDoc를 사용하여 삭제하고 윈도우를 reload하여 삭제한 내용을 안보이게 하였습니다.
-            await deleteDoc(doc(db, "comments", formCheckId));
             window.location.reload();
         });
-        
+
         $("#savebtn").click(async function () {
             $('#commentbox').toggle();
         })
 
         $('#card').empty();
 
+
+        // 방명록 가져오기
         let docs = await getDocs(collection(db, "comments"));
         docs.forEach((doc) => {
             let row = doc.data();
@@ -189,7 +188,7 @@
             </button>
             </div>
             </div>`;
-            $('#card').append(temp_html)
+            $('#card').append(temp_html);
         });
 
     </script>
