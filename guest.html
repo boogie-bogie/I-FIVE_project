@@ -121,6 +121,22 @@
 
         })
 
+        $('.ourcards').on('click', '.editbtn', async function () {
+        let card = $(this).closest('.card.border-light.mb-3');
+        let contentdox = card.attr('id');
+        console.log(contentdox);
+
+        let newContent = prompt("수정할 한마디를 입력해주세요.")
+        if (newContent == '') {
+                alert('내용이 비어 있어 수정할 수 없습니다!')
+            }
+        else {
+                await updateDoc(doc(db, "comments", contentdox), { content: newContent });
+                window.location.reload();
+            }
+
+        });
+
         $("#savebtn").click(async function () {
             $('#commentbox').toggle();
         })
@@ -135,15 +151,19 @@
             let name = row['name'];
             let content = row['content'];
             let email = row['email'];
+            let contentdox = doc.id;
 
             let temp_html = `
-            <div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">${email}</div>
-  <div class="card-body">
-    <h5 class="card-title">${name}</h5>
-    <p class="card-text">${content}</p>
-  </div>
-</div>`;
+            <div class="card border-light mb-3" id = "${contentdox}" style="max-width: 18rem;">
+            <div class="card-header">${email}</div>
+            <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text">${content}</p>
+            <button class="editbtn" style="background-color: #ffffff00; border: none;">
+            <img src="./edit.png" alt="수정버튼" width="20px" height="20px">
+            </button>
+            </div>
+            </div>`;
             $('#card').append(temp_html)
         });
 
