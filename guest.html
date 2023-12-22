@@ -137,6 +137,28 @@
 
         });
 
+                // 삭제 버튼은 id가 goalsContainer인 div안에 있고 그 안에 있는 deletebtn을 클릭했을 때 작동하도록 해야합니다.
+        // ※ 버튼은 id가 아니라 class인 이유 : 버튼은 아이디가 바뀔 필요성이 없고 하나의 버튼이 여러 div안에 있으므로 id는 중첩이 안되도록 하나만 있어야 하지만 class는 중복 되어도 상관없기 때문
+        // 그런 뒤 파이어 스토어는 비동기 성이 존재하므로 async function 즉, 비동기 함수를 써야합니다..
+        $('#card').on('click', '.deletebtn', async function () {
+            // 해당하는 버튼의 id찾기
+            // this는 내가 버튼을 누른 그 순간의 deletebtn.
+            // closet()메서드는 가장 가까이에 있는 부모인 클래스 form-chech를 찾아갑니다 (div).
+            // 찾은 formcheck에서 find()메서드로 ladel을 찾고 그 안에 있는 for의 속성(attr)을 가져오면 데이터베이스 문서(goals)의 이름을 가져 올수 있습니다.
+            let formCheck = $(this).closest('.card');
+            // console.log(formCheck);
+            let formCheckId = formCheck.attr('id');
+            console.log(formCheckId);
+            // let contentdox = formCheck.find('.textcontainer').attr('id');
+            // console.log(contentdox);
+            // 여기까지 되면 삭제완료가 뜨도록 하였고
+            alert('삭제 완료!');
+            // 파이어 스토어에서 import한  doc, deleteDoc 를 사용하여
+            // doc에 데이터베이스 정보, 문서 공간, 문서 이름을 보내서 deleteDoc를 사용하여 삭제하고 윈도우를 reload하여 삭제한 내용을 안보이게 하였습니다.
+            await deleteDoc(doc(db, "comments", formCheckId));
+            window.location.reload();
+        });
+        
         $("#savebtn").click(async function () {
             $('#commentbox').toggle();
         })
@@ -161,6 +183,9 @@
             <p class="card-text">${content}</p>
             <button class="editbtn" style="background-color: #ffffff00; border: none;">
             <img src="./edit.png" alt="수정버튼" width="20px" height="20px">
+            </button>
+            <button class="deletebtn" style="background-color: #ffffff00; border: none;">
+            <img src="./deletebtn.png" alt="삭제버튼" width="20px" height="20px">
             </button>
             </div>
             </div>`;
