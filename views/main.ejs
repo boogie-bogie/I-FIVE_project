@@ -1,0 +1,437 @@
+<%-include('header.ejs')%>
+<!-- 대표 특징 슬라이드 -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner" style="width: 90%; height: 500px; margin: 0 auto;">
+            <div class="carousel-item active">
+                <img src="/mainslideimg/speed.jpg" class="d-block w-100"
+                    alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="text-align: right; color: black;">
+                    <h1 class="stitle" style="font-size: 80px; font-weight: 600; color: orange; margin-right: 400px; ">S p e e d</h1>
+                    <h3 style="font-size: 35px; font-weight: 500;">대문자 I치고 굉장히 속도가 빠릅니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img src="/mainslideimg/meeting.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="margin: 266px auto;;text-align: right; color: black;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600;">Communication</h1>
+                    <h3 style=" font-size: 35px; font-weight: 500;">의사소통이 굉장히 원활합니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/mainslideimg/challenge.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style=" margin-bottom: 300px; color: black;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600;">C h a l l e n g e</h1>
+                    <h3 style=" font-size: 30px; font-weight: 500;">해보겠다는 의지는 모든 조 중에서 최고입니다!</h3>
+                </div>
+            </div>
+            <div class="carousel-item " style="width: 80%;">
+                <img src="/mainslideimg/idea.jpg" class="d-block w-100"
+                    alt="picture">
+                <div class="carousel-caption d-none d-md-block" style="width: 400px; margin: 0px 0px 90px 680px;text-align: center;">
+                    <h1 class="stitle" style=" font-size: 50px; font-weight: 600; margin-bottom: 30px;">I d e a</h1>
+                    <h3 style=" font-size: 30px; font-weight: 500;">아이디어 자판기들이 모여있습니다.</h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/mainslideimg/Systematic.jpg"
+                    class="d-block w-100" alt="picture">
+                <div class="carousel-caption d-none d-md-block" style=" margin: 0px 0px 94px 0px;">
+                    <h1 class="stitle" style=" font-size: 80px; font-weight: 600; margin-bottom: 70px; color: mediumvioletred;">S y s t e m a  t i c</h1>
+                    <h3 style=" font-size: 40px; font-weight: 500; color: rgb(102, 255, 153);">아주 체계적이고 섬세합니다.</h3>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- 멤버 개인 소개 -->
+    <p style="font-size: 30px; margin-left: 80px; margin-top: 20px; padding-left: 30px;"> I-FIVE 멤버를 소개합니다! </p>
+    <div class="members">
+
+        <!-- 메인화면 지민 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                <img width="200px" height="200px" src="./profile_picture/i_1.jpg" alt="곽지민">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">곽 지 민</p>
+
+            <!-- 개인 모달 지민 -->
+            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./profile_picture/i_1.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        곽지민
+                                    </h1>
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFP</p>
+                                    <p>블로그 : https://startcoriny.tistory.com</p>
+                                    <p>나만의 장점
+                                        <br />• 포기하는 법을 모릅니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 일단 해봅니다.
+                                        <br />• 어떻게든 합니다.
+                                        <br />• 모두의 의견들 들어주고 절충안을 생각하여 해결합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 모두가 포기하지 않고 끝까지 갈수 있도록 서로 돕겠습니다.
+                                        <br />• 취직하자!!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 경복 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+                <img width="200px" height="200px" src="./profile_picture/i_2.jpg" alt="이경복">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">이 경 복</p>
+
+            <!-- 개인 모달 경복 -->
+            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img src="./profile_picture/i_2.jpg" class="rounded float-end" width="300px" height="300px"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        이 경 복
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFJ</p>
+                                    <p>블로그 : https://velog.io/@boogiegie</p>
+                                    <p>나만의 장점
+                                        <br />• 지독하게 꼼꼼합니다.
+                                        <br />• 기준이 확고하고 판단이 빠른편입니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 계획적이고 건설적인 대화를 즐깁니다.
+                                        <br />• 서로 의지할 수 있는 끈적한 팀워크를 선호합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br /> 지금을 즐기자! 아 즐겁다!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 세연 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+                <img width="200px" height="200px" src="./profile_picture/i_3.jpg" alt="박세연">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">박 세 연</p>
+
+            <!-- 개인 모달 세연 -->
+            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./profile_picture/i_3.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        박 세 연
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : ISFJ</p>
+                                    <p>블로그 : https://velog.io/@park-sy13</p>
+                                    <p>나만의 장점
+                                        <br />• 관심을 가지고 있는 것에 한해서 정보를 조사하는 것이 빠릅니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 타인의 의견을 모아서 최고의 결론을 도출하는 것을 좋아합니다.
+                                        <br />• 간결한 것을 좋아하기 때문에짧게 요점만 나누어 보다 빠르게 결론을 도출하고자 합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 포기하지 말고 최선을 다할 것!!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 지선 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
+                <img width="200px" height="200px" src="./profile_picture/i_4.jpg" alt="임지선">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">임 지 선</p>
+
+            <!-- 개인 모달 지선 -->
+            <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px" src="./profile_picture/i_4.jpg" class="rounded float-end"
+                                        alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        임 지 선
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INTP</p>
+                                    <p>블로그 : https://velog.io/@henryt</p>
+                                    <p>나만의 장점
+                                        <br />• 재미있어지면 멈출 수 없습니다.
+                                        <br />• 한 번 집중하면 파고듭니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 상대방의 의견에 귀 귀울여 줍니다.
+                                        <br />• 좋은 의견이 생각나면 제시하기도 하지만 팀원의 더 좋은 의견에 잘 수긍합니다.
+                                        <br />• 맡은 일에 최선을 다합니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 배움을 게을리 하지 않는다!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 메인화면 대수 -->
+        <div>
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+                <img width="200px" height="200px"
+                    src="./profile_picture/i_5.jpg" alt="박대수">
+            </button>
+            <p style="text-align: center; font-size: 150%; color: white;">박 대 수</p>
+
+            <!-- 개인 모달 대수 -->
+            <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel1">I - FIVE Team Member</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div style="position: relative;">
+                                <div>
+                                    <img width="300px" height="300px"
+                                        src="./profile_picture/i_5.jpg"
+                                        class="rounded float-end" alt="...">
+                                    <h1
+                                        style="position: absolute; top: 4%; left: 16%; font-size: 72px; font-weight: 600;">
+                                        박 대 수
+                                    </h1>
+
+                                </div>
+                                <div id="textdumi" style="clear: both; font-size: 30px;">
+                                    <h2 style="font-size: 45px;">나를 소개해봐요!!</h2>
+                                    <p>mbti : INFP</p>
+                                    <p>블로그 : https://velog.io/@qkrds0914/posts</p>
+                                    <p>나만의 장점
+                                        <br />• 적극적입니다.
+                                        <br />• 유연한 사고를 가지고 있습니다.
+                                    </p>
+                                    <p>나의 스타일과 협업 스타일
+                                        <br />• 함께 활동하는 것을 좋아합니다.
+                                        <br />• 자유롭게 의견을 나누는 것을 즐깁니다.
+                                    </p>
+                                    <p>나의 다짐
+                                        <br />• 취직합시다. 꼭!!
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 팀 규칙, 팀 비전 -->
+    <div class="page2" style=" display:flex; width: 100%; margin: 0 auto; flex-direction: row; justify-content: center;">
+        <div class="page2-textbox">
+            <div style="font-size:40px;font-weight:bold;padding:0px 50px 0px 50px; margin-bottom: 45px; ">팀 규칙</div>
+            <p style="padding:0px 50px 0px 50px;">1. 10분 이상 지각 <span style="color: yellow; font-size: 40px;">NO</span>
+            </p>
+            <p style="margin-top: 5px;padding:0px 50px 0px 50px;">2. 모르는 것 바로 질문하고 확실히 이해하기(단, 적당히 끊어줄 것)</p>
+            <p style="padding:0px 50px 0px 50px;"> 3. 자리 비울 때 공유 잘 하기</p>
+            <p style="padding:0px 50px 0px 50px;">4. 루틴 잘 지키기</p>
+            <p style="padding:0px 50px 0px 50px"><span style="color: yellow; font-size: 40px;">무리하지 않기!! 번아웃 No!</span>
+            </p>
+            <!-- <p style="padding:0px 50px 0px 50px;">저희 3조는, <span style="color: yellow; font-size: 40px;">I</span> 성향 5명이
+                모인 팀입니다.</p>
+            <p style="margin-top: 5px;padding:0px 50px 0px 50px;">굉장히 빠른 속도로 의견수립이 되며</p>
+            <p style="padding:0px 50px 0px 50px;"> 빠르게 행동으로 실행하고 있습니다.</p>
+            <p style="padding:0px 50px 0px 50px;">그만큼 체계적이면서 섬세하기까지한 아이들이 모였습니다!</p>
+            <p style="padding:0px 50px 0px 50px"><span style="color: yellow; font-size: 40px;">I</span> 치고 에너지 넘치는 3조!
+                I-FIVE 입니다!</p> -->
+        </div>
+        <div class="page2-textbox">
+            <div style="font-size:40px;font-weight:bold;padding:0px 50px 0px 50px; margin-bottom: 45px; ">궁극적인 목표</div>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">지민</span> - 코딩마스터
+            </p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">경복</span> - 배운거 다
+                써먹고 씹어먹기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">세연</span> - 에러 원인과
+                해결법 꼼꼼히 기록하기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">지선</span> - 절대 포기하지
+                않기</p>
+            <p style="padding:0px 50px 0px 50px;"><span style="color: yellowgreen; font-size: 35px;">대수</span> - 풀스택을
+                자유롭게 활용하자</p>
+        </div>
+    </div>
+
+
+    <!-- 오늘의 목표 -->
+    <div style="border: 10px solid #ffe45dc7; width: 50%; margin: 0 auto; margin-bottom: 20px; padding: 20px; border-radius: 10px;"
+        class="vision_container">
+        <div class="title">
+            <h1>오늘 우리의 목표</h1>
+            <p>힘차게 달려가는 오늘은 <span id="day">월요일💪😀</span></p>
+        </div>
+        <div class="mypostingbox" id="postingbox">
+            <div style="width: 100%;" class="form-floating mb-3">
+                <input type="text" class="form-control" id="goal" placeholder="목표를 작성하세요">
+                <label for="floatingInput">새로운 목표는?</label>
+            </div>
+            <div class="mybtn" style="width: 100%; text-align: right;">
+                <button id="postingbtn" type="button" class="btn btn-outline-light">작성 완료!</button>
+            </div>
+        </div>
+        <div class="mygoals">
+            <div id="goalsContainer" class="goalsContainer">
+                <div class="bd-example m-0 border-0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 방명록 작성 -->
+    <div>
+        <div class="guestbook">
+            <h1>3조 응원하기</h1>
+            <button id="savebtn">메시지 작성</button>
+        </div>
+        <div class="ourcommentbox" id="commentbox">
+            <label class="form-label" , style="color: white">이름과 주소</label>
+            <div class="input-group mb-3">
+                <input style="font-size: 25px;" type="text" id="name" class="form-control" placeholder="name"
+                    aria-label="name">
+                <span class="input-group-text">이메일</span>
+                <input style="font-size: 25px;" type="text" id="email" class="form-control" placeholder="email"
+                    aria-label="email">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label" , style="color: white">응원의 한마디</label>
+                <textarea style="height: 131px; font-size: 25px;" class="form-control" id="content" rows="3"></textarea>
+            </div>
+            <div class="ourbtn">
+                <button style="width: 140px; height: 60px; font-size: 30px; " id="commentbtn" type="button"
+                    class="btn btn-outline-light">등록하기</button>
+            </div>
+        </div>
+
+        <div class="ourcards">
+            <h1>응원의 메시지</h1>
+            <div id="card" style="width: 1300px;" class="row row-cols-1 row-cols-md-4 g-4">
+
+            </div>
+        </div>
+    </div>
+    <%-include('footer.ejs')%>

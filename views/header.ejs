@@ -1,0 +1,518 @@
+<!doctype html>
+
+</html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" width="device-width" initial-scale=1.0>
+    <title>우리 3조를 소개합니다!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Single Day', 'cursive';
+        }
+
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        footer {
+            height: 188px;
+            font-size: 29px;
+        }
+
+        #header_title {
+            margin: 0px auto 0px auto;
+            background-color: white;
+            width: 90%;
+            border: 1px solid white;
+            border-radius: 5px
+        }
+
+        .members {
+            width: 90%;
+            margin: 15px auto 20px auto;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            color: black;
+        }
+
+        .members img {
+            width: 200px;
+            height: 271px;
+            border: 1px solid rgba(255, 255, 255, 0);
+            margin-bottom: 10px;
+            border-radius: 10PX;
+        }
+
+        .intro {
+            width: 1200px;
+            height: 150px;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 20px 0px 0px 20px;
+        }
+
+        .namebox {
+            margin: 15px auto 20px auto;
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .namebox>text {
+            width: 170px;
+            height: 30px;
+            border: 1px solid white;
+        }
+
+        .page2-textbox {
+            margin: 100px 50px;
+            padding-top: 50px;
+            width: 685px;
+            height: 600px;
+            border: 5px solid white;
+            color: white;
+            border-radius: 15px;
+        }
+
+        .page2-textbox p {
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        .page2-justbox {
+            margin: 100px 50px;
+            padding-top: 50px;
+            width: 685px;
+            height: 600px;
+            border: 5px solid white;
+            border-radius: 15px;
+        }
+
+        .page2-justbox td {
+            border: 3px solid white;
+            border-radius: 10px;
+        }
+
+        .carousel-item img {
+            height: 500px;
+        }
+
+        .goalsContainer {
+            font-size: 28px;
+        }
+
+        /* 여기부터 방명록 */
+        .guestbook {
+            height: 250px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-position: center;
+            background-size: cover;
+        }
+
+        .guestbook>button {
+            width: 150px;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+
+            margin-top: 20px;
+        }
+
+        .ourcards {
+            color: white;
+            width: 1200px;
+            margin: 75px auto 54px auto;
+        }
+
+        .ourcommentbox {
+            height: 440px;
+            width: 600px;
+            margin: 30px auto 0px auto;
+            border: 4px solid rgb(45, 164, 103);
+            ;
+            padding: 20px;
+            box-shadow: 0px 0px 20px 0px rgb(45, 164, 103);
+
+            border-radius: 5px;
+            font-size: 30px;
+        }
+
+        .ourbtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .ourbtn>button {
+            margin-right: 5px;
+        }
+
+        .card {
+            background-color: transparent;
+            margin-right: 20px;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_ZgQOmX6ggtWDytaIJn_-yqp22vJIhOs",
+            authDomain: "sparta-54f1b.firebaseapp.com",
+            projectId: "sparta-54f1b",
+            storageBucket: "sparta-54f1b.appspot.com",
+            messagingSenderId: "417143827658",
+            appId: "1:417143827658:web:bffd7bac9f40fd269c5833",
+            measurementId: "G-S0KNW7GGEK"
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+
+        // 팀목표 추가
+        $("#postingbtn").click(async function () {
+            let goal = $('#goal').val();
+
+            let doc = {
+                'goal': goal
+            };
+            await addDoc(collection(db, "goals"), doc);
+            alert('등록 완료!');
+            window.location.reload();
+        })
+
+        $('#goalsContainer').empty();
+
+
+        // 팀목표 가져오기
+        let docs = await getDocs(collection(db, "goals"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let goalId = doc.id;
+
+            let goal = row['goal'];
+
+            // 가져온후 팀목표를 삭제를 하기위한 작업
+            // 글을 추가하고 보여질 때 해당하는 버튼을 한 div에 묶어서 만들어준다.
+            let temp_html = `
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="${goalId}">
+                <label class="form-check-label" for="${goalId}">
+                    ${goal}
+                </label>
+                <button class="deletebtn" style="background-color: #ffffff00; border: none;">
+                    <img src="./deletebtn.png" alt="삭제버튼" width="20px" height="20px">
+                </button>
+            </div>`;
+            $('#goalsContainer').append(temp_html)
+        });
+
+
+        // 팀목표 삭제
+        // 삭제 버튼은 id가 goalsContainer인 div안에 있고 그 안에 있는 deletebtn을 클릭했을 때 작동하도록 해야합니다.
+        // ※ 버튼은 id가 아니라 class인 이유 : 버튼은 아이디가 바뀔 필요성이 없고 하나의 버튼이 여러 div안에 있으므로 id는 중첩이 안되도록 하나만 있어야 하지만 class는 중복 되어도 상관없기 때문
+        // 그런 뒤 파이어 스토어는 비동기 성이 존재하므로 async function 즉, 비동기 함수를 써야합니다..
+        $('#goalsContainer').on('click', '.deletebtn', async function () {
+
+            // 해당하는 버튼의 id찾기
+
+            // this는 내가 버튼을 누른 그 순간의 deletebtn.
+            // closet()메서드는 가장 가까이에 있는 부모인 클래스 form-chech를 찾아갑니다 (div).
+            // 찾은 formcheck에서 find()메서드로 ladel을 찾고 그 안에 있는 for의 속성(attr)을 가져오면 데이터베이스 문서(goals)의 이름을 가져 올수 있습니다.  
+            let formCheck = $(this).closest('.form-check');
+            let goalId = formCheck.find('label').attr('for');
+            console.log(goalId);
+
+            // 여기까지 되면 삭제완료가 뜨도록 하였고
+            alert('삭제 완료!');
+
+            // 파이어 스토어에서 import한  doc, deleteDoc 를 사용하여
+            // doc에 데이터베이스 정보, 문서 공간, 문서 이름을 보내서 deleteDoc를 사용하여 삭제하고 윈도우를 reload하여 삭제한 내용을 안보이게 하였습니다.
+            await deleteDoc(doc(db, "goals", goalId));
+
+            window.location.reload();
+        });
+
+
+        // 방명록 추가 및 유효성 체크
+        $("#commentbtn").click(async function () {
+            let name = $('#name').val();
+            let content = $('#content').val();
+            let email = $('#email').val();
+
+            if (name == '' || content == '' || email == '') {
+
+                alert("입력되지 않은 사항이 있습니다!")
+            }
+            else {
+                let doc = {
+                    'name': name,
+                    'content': content,
+                    'email': email
+                };
+                await addDoc(collection(db, "comments"), doc);
+                alert('저장 완료!');
+                window.location.reload();
+            }
+        });
+
+
+        // 방명록 수정하기
+        $('.ourcards').on('click', '.editbtn', async function () {
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
+
+            let newContent = prompt("수정할 한마디를 입력해주세요.")
+            if (newContent == '') {
+                alert('내용이 비어 있어 수정할 수 없습니다!')
+            }
+            else {
+                await updateDoc(doc(db, "comments", contentdox), { content: newContent });
+                window.location.reload();
+            }
+        });
+
+
+        // 방명록 삭제하기
+        $('#card').on('click', '.deletebtn', async function () {
+
+            let card = $(this).closest('.card.border-light.mb-3');
+            let contentdox = card.attr('id');
+            console.log(contentdox);
+
+
+            await deleteDoc(doc(db, "comments", contentdox));
+            alert('삭제 완료!');
+            window.location.reload();
+        });
+
+        $("#savebtn").click(async function () {
+            $('#commentbox').toggle();
+        })
+
+        $('#card').empty();
+
+
+        // 방명록 가져오기
+        let docs1 = await getDocs(collection(db, "comments"));
+        docs1.forEach((doc) => {
+            let row = doc.data();
+            console.log(row);
+
+            let name = row['name'];
+            let content = row['content'];
+            let email = row['email'];
+            let contentdox = doc.id;
+
+            let temp_html = `
+            <div class="card border-light mb-3" id = "${contentdox}" style="max-width: 18rem; ;">
+            <div class="card-header">${email}</div>
+            <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <p class="card-text">${content}</p>
+            <button class="editbtn" style="background-color: #ffffff00; border: none;">
+            <img src="./edit.png" alt="수정버튼" width="20px" height="20px">
+            </button>
+            <button class="deletebtn" style="background-color: #ffffff00; border: none;">
+            <img src="./deletebtn.png" alt="삭제버튼" width="20px" height="20px">
+            </button>
+            </div>
+            </div>`;
+            $('#card').append(temp_html);
+        });
+
+
+
+        //요일 가져오기
+
+        var todayContainer = document.querySelector(".today");
+        var d = new Date();
+        console.log(d.getDay());
+
+
+        var weekday = new Array(7);
+        weekday[0] = "일요일🥰";
+        weekday[1] = "월요일💪";
+        weekday[2] = "화요일😜";
+        weekday[3] = "수요일😌";
+        weekday[4] = "목요일🤗";
+        weekday[5] = "금요일💖";
+        weekday[6] = "토요일😴";
+
+
+        var n = weekday[d.getDay()];
+        $('#day').text(n)
+
+    </script>
+
+
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+<body>
+
+    <header style="margin-bottom: 10px; --bs-bg-opacity: .5;" class="p-3 text-bg-dark">
+        <div class="container" class="w-100">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li style="font-size: 50px;" class=" px-4 text-warning">I - FIVE</a></li>
+                </ul>
+
+                <div class="text-end">
+                    <% if (is_logon) { %>
+                        <span>
+                            <%= nickname %>님 환영합니다.
+                        </span>
+                        <!-- 로그아웃 버튼 -->
+                        <form action="/logout" style="display: contents;">
+                            <button class="btn btn-secondary" type="submit">로그아웃</button>
+                        </form>
+                        <% } else { %>
+                            <!-- 로그인 및 회원가입 버튼 -->
+                            <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#signinModal">Sign-up</button>
+                            <% } %>
+
+                                <!-- login Modal -->
+                                <div style="color: black;" class="modal fade" id="loginModal" tabindex="-1"
+                                    aria-labelledby="loginModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">login</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form name="log_in" action="/login" method="post">
+                                                    <!--  html 전체 영역을 지정하는 container -->
+                                                    <div id="container">
+                                                        <!--  login 폼 영역을 : loginBox -->
+                                                        <div id="loginBox">
+                                                            <!-- 로그인 페이지 타이틀 -->
+                                                            <!-- 아이디, 비번, 버튼 박스 -->
+                                                            <div id="inputBox">
+                                                                <div class="input-form-box" style="text-align: left;">
+                                                                    <span>아이디 </span><input type="text" name="id"
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="input-form-box" style="text-align: left;">
+                                                                    <span>비밀번호 </span><input type="password"
+                                                                        name="password" class="form-control">
+                                                                </div>
+                                                                <div style="margin-top: 20px;" class="button-login-box">
+                                                                    <button type="submit" class="btn btn-primary btn-xs"
+                                                                        style="width:100%">로그인</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- sign_in Modal -->
+                                <div style="color: black;" class="modal fade" id="signinModal" tabindex="-1"
+                                    aria-labelledby="signinModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="signinModalLabel">login</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div style="text-align: left;" class="modal-body">
+                                                <form action="/addmember" method="post">
+                                                    <fieldset>
+                                                        <legend>회원가입</legend>
+                                                        <div>
+                                                            <label for="id"><strong>ID :</strong></label required>
+                                                            <input type="text" name="id" id="id">
+                                                        </div>
+                                                        <div>
+                                                            <label for="name"><strong>NAME :</strong></label required>
+                                                            <input type="text" name="name" id="name">
+                                                        </div>
+                                                        <div>
+                                                            <label for="email"><strong>email : </strong>
+                                                                <input type="text" name="email" id="email" size="35" placeholder="이메일작성" required>
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <label for="password"><strong>PASSWORD :</strong>
+                                                                <input type="password" name="password" id="password"
+                                                                    size="35"required>
+                                                            </label>
+                                                        </div>
+                                                    </fieldset>
+                                                    <div style="text-align: right;">
+                                                        <button  type="submit">회원가입</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
